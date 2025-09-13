@@ -5,6 +5,7 @@ import { BudgetCard } from "@/components/BudgetCard";
 import { MetricsGrid } from "@/components/MetricsGrid";
 import { ExpenseTracker } from "@/components/ExpenseTracker";
 import { SimplePieChart } from "@/components/SimpleCharts";
+import { SavingsGoals } from "@/components/SavingsGoals";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Coffee, Book, Car, Home, Gamepad2, ShoppingCart, Lightbulb, Sparkles } from 'lucide-react';
 
@@ -26,6 +27,36 @@ const Index = () => {
     { id: 6, amount: 60, description: 'Dinner out', category: 'food', date: '2024-09-07', auto: true },
     { id: 7, amount: 35, description: 'Netflix subscription', category: 'entertainment', date: '2024-09-06', auto: true },
     { id: 8, amount: 22, description: 'Laundry', category: 'utilities', date: '2024-09-05', auto: true },
+  ]);
+
+  const [savingsGoals, setSavingsGoals] = useState([
+    {
+      id: 1,
+      title: 'Emergency Fund',
+      targetAmount: 1000,
+      currentAmount: currentSavings,
+      targetDate: '2024-12-31',
+      category: 'emergency',
+      priority: 'high' as const
+    },
+    {
+      id: 2,
+      title: 'New Laptop',
+      targetAmount: 800,
+      currentAmount: 245,
+      targetDate: '2024-11-15',
+      category: 'education',
+      priority: 'medium' as const
+    },
+    {
+      id: 3,
+      title: 'Spring Break Trip',
+      targetAmount: 600,
+      currentAmount: 120,
+      targetDate: '2025-03-01',
+      category: 'travel',
+      priority: 'low' as const
+    }
   ]);
 
   const categoryColors = {
@@ -98,6 +129,26 @@ const Index = () => {
     setExpenses([expense, ...expenses]);
     setTotalSpent(prev => prev + newExpense.amount);
     setPoints(prev => prev + 10);
+  };
+
+  const handleAddSavingsGoal = (newGoal: Omit<typeof savingsGoals[0], 'id'>) => {
+    const goal = {
+      ...newGoal,
+      id: savingsGoals.length + 1,
+    };
+    setSavingsGoals([...savingsGoals, goal]);
+    setPoints(prev => prev + 50);
+  };
+
+  const handleUpdateSavingsGoal = (goalId: number, amount: number) => {
+    setSavingsGoals(goals => 
+      goals.map(goal => 
+        goal.id === goalId 
+          ? { ...goal, currentAmount: goal.currentAmount + amount }
+          : goal
+      )
+    );
+    setPoints(prev => prev + Math.floor(amount / 5)); // 1 point per $5 saved
   };
 
   return (
@@ -232,6 +283,16 @@ const Index = () => {
         {activeTab === 'expenses' && (
           <div>
             <ExpenseTracker expenses={expenses} onAddExpense={handleAddExpense} />
+          </div>
+        )}
+
+        {activeTab === 'savings' && (
+          <div>
+            <SavingsGoals 
+              goals={savingsGoals} 
+              onAddGoal={handleAddSavingsGoal} 
+              onUpdateGoal={handleUpdateSavingsGoal} 
+            />
           </div>
         )}
       </div>
