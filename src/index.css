@@ -2,39 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Student Finance App Design System - Beautiful gradients and colors */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 240 6% 98%;
     --foreground: 222.2 84% 4.9%;
+    
+    /* Brand colors for finance app */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 221 83% 65%;
+    
+    /* Success & Money colors */
+    --success: 142 71% 45%;
+    --success-foreground: 210 40% 98%;
+    --success-glow: 142 71% 55%;
+    
+    /* Warning & Alert colors */
+    --warning: 38 92% 50%;
+    --warning-foreground: 222.2 84% 4.9%;
+    --warning-glow: 38 92% 65%;
+    
+    /* Danger colors */
+    --danger: 0 84% 60%;
+    --danger-foreground: 210 40% 98%;
+    
+    /* AI & Intelligence colors */
+    --ai: 252 83% 57%;
+    --ai-foreground: 210 40% 98%;
+    --ai-glow: 252 83% 70%;
+    
+    /* Gamification colors */
+    --gold: 45 93% 58%;
+    --gold-foreground: 222.2 84% 4.9%;
+    --level: 280 83% 57%;
+    --level-foreground: 210 40% 98%;
+    
+    /* Beautiful gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(var(--success-glow)));
+    --gradient-warning: linear-gradient(135deg, hsl(var(--warning)), hsl(var(--warning-glow)));
+    --gradient-ai: linear-gradient(135deg, hsl(var(--ai)), hsl(var(--ai-glow)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(45 93% 68%) 100%);
+    --gradient-level: linear-gradient(135deg, hsl(var(--level)), hsl(280 83% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--ai)) 50%, hsl(var(--success)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(240 6% 95%) 100%);
+    
+    /* Shadows */
+    --shadow-primary: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-success: 0 10px 30px -10px hsl(var(--success) / 0.3);
+    --shadow-ai: 0 10px 30px -10px hsl(var(--ai) / 0.3);
+    --shadow-elegant: 0 4px 20px -2px hsl(222.2 84% 4.9% / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
+    /* Shadcn compatible colors */
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
+    
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
+    
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
+    
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
+    
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
+    
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-
+    
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 221 83% 53%;
 
     --radius: 0.5rem;
 
